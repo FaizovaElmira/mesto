@@ -1,6 +1,7 @@
 .photo__item {
-  width: 282px;
-  height: 282px;
+  width: 100%;
+  height: auto;
   border-radius: 10px 10px 0 0;
   cursor: pointer;
+  display: block;
 }
