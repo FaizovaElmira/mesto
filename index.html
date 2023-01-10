@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Mesto Russia</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img class="header__logo" src="./images/logo.svg" alt="Логотип" />
+      </header>
+      <main>
+        <section class="profile">
+          <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар" />
+          <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button
+              class="profile__button profile__button_type_edit"
+              type="button"
+              aria-label="Кнопка редактирования"
+            ></button>
+            <p class="profile__profession">Исследователь океана</p>
+          </div>
+          <button
+            class="profile__button profile__button_type_add"
+            type="button"
+            aria-label="Кнопка добавления карточки"
+          ></button>
+        </section>
+        <section class="photo" aria-label="Галерея фотографий">
+          <ul class="photo__container">
+            <li>
+              <img
+                class="photo__item"
+                src="./images/photo-karachaevsk.jpg"
+                alt="Карачаевск"
+              />
+              <div class="photo__info">
+                <h2 class="photo__title">Карачаевск</h2>
+                <button
+                  class="photo__like"
+                  type="button"
+                  aria-label="Кнопка лайка"
+                ></button>
+              </div>
+            </li>
+            <li>
+              <img
+                class="photo__item"
+                src="./images/photo-elbrus.jpg"
+                alt="Эльбрус"
+              />
+              <div class="photo__info">
+                <h2 class="photo__title">Гора Эльбрус</h2>
+                <button
+                  class="photo__like"
+                  type="button"
+                  aria-label="Кнопка лайка"
+                ></button>
+              </div>
+            </li>
+            <li>
+              <img
+                class="photo__item"
+                src="./images/photo-dombai.jpg"
+                alt="Домбай"
+              />
+              <div class="photo__info">
+                <h2 class="photo__title">Домбай</h2>
+                <button
+                  class="photo__like"
+                  type="button"
+                  aria-label="Кнопка лайка"
+                ></button>
+              </div>
+            </li>
+            <li>
+              <img
+                class="photo__item"
+                src="./images/photo-elbrus.jpg"
+                alt="Эльбрус"
+              />
+              <div class="photo__info">
+                <h2 class="photo__title">Гора Эльбрус</h2>
+                <button
+                  class="photo__like"
+                  type="button"
+                  aria-label="Кнопка лайка"
+                ></button>
+              </div>
+            </li>
+            <li>
+              <img
+                class="photo__item"
+                src="./images/photo-dombai.jpg"
+                alt="Домбай"
+              />
+              <div class="photo__info">
+                <h2 class="photo__title">Домбай</h2>
+                <button
+                  class="photo__like"
+                  type="button"
+                  aria-label="Кнопка лайка"
+                ></button>
+              </div>
+            </li>
+            <li>
+              <img
+                class="photo__item"
+                src="./images/photo-karachaevsk.jpg"
+                alt="Карачаевск"
+              />
+              <div class="photo__info">
+                <h2 class="photo__title">Карачаево-Черкесская Республика</h2>
+                <button
+                  class="photo__like"
+                  type="button"
+                  aria-label="Кнопка лайка"
+                ></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&copy;2023 Mesto Russia</p>
+      </footer>
+      <section class="popup">
+        <div class="popup__container">
+          <form class="popup__form">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input type="text" class="popup__input popup__input_type_name" />
+            <input
+              type="text"
+              class="popup__input popup__input_type_profession"
+            />
+            <button type="submit" class="popup__button popup__button_type_save">
+              Сохранить
+            </button>
+          </form>
+          <button
+            type="button"
+            class="popup__button popup__button_type_close"
+          ></button>
+        </div>
+      </section>
+    </div>
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>

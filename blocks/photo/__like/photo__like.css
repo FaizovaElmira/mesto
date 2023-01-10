@@ -1,0 +1,15 @@
+.photo__like {
+    background-image: url(../../../images/icon-like.svg);
+    width: 22px;
+    height: 19px;
+    border: none;
+    background-color: transparent;
+    margin: 5px 5px 0 0;
+    transition: opacity .3s linear;
+}
+
+.photo__like:hover {
+    opacity: .5;
+    cursor: pointer;
+
+}
