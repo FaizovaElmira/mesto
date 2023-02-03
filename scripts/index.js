@@ -1,29 +1,3 @@
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
 const cardsContainer = document.querySelector(".photo__container");
 const cardsTemplate = document.querySelector(".photo-template");
 
@@ -79,6 +53,8 @@ formElementEdit.addEventListener("submit", handleEditFormSubmit);
 formElementAdd.addEventListener("submit", handleAddFormSubmit);
 
 buttonEdit.addEventListener("click", () => {
+  nameInput.value = profileName.textContent;
+  professionInput.value = profileProfession.textContent;
   openPopup(popupEditProfile);
 });
 buttonEditClose.addEventListener("click", () => {
