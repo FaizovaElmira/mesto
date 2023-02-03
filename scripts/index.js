@@ -38,6 +38,8 @@ const buttonEditClose = popupEditProfile.querySelector(".popup__button_type_clos
 
 const popupAddCard = document.querySelector(".popup_type_add");
 const formElementAdd = popupAddCard.querySelector(".popup__form_type_add");
+const titleInput = formElementAdd.querySelector(".popup__input_type_title");
+const linkInput = formElementAdd.querySelector(".popup__input_type_link");
 const buttonAdd = document.querySelector(".profile__button_type_add");
 const buttonAddClose = popupAddCard.querySelector(".popup__button_type_close");
 
@@ -62,9 +64,7 @@ function handleEditFormSubmit(evt) {
 }
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
-  const titleInput = formElementAdd.querySelector(".popup__input_type_title").value;
-  const linkInput = formElementAdd.querySelector(".popup__input_type_link").value;
-  const card = createCard({ name: titleInput, link: linkInput });
+  const card = createCard({ name: titleInput.value, link: linkInput.value });
   cardsContainer.prepend(card);
   closePopup(popupAddCard);
   evt.currentTarget.reset();
