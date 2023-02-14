@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css" />
     <script src="./scripts/constants.js" defer></script>
+    <script src="./scripts/validate.js" defer></script>
     <script src="./scripts/index.js" defer></script>
     <title>Mesto Russia</title>
   </head>
@@ -41,40 +42,97 @@
       </footer>
       <div class="popup popup_type_edit">
         <div class="popup__container">
-          <form class="popup__form popup__form_type_edit" method="post" name="formElementEdit">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Имя"/>
-            <input class="popup__input popup__input_type_profession" type="text" name="profession" placeholder="Профессия"/>
-            <button class="popup__button popup__button_type_save" type="submit">Сохранить</button>
+          <form class="form form_type_edit" name="formElementEdit" novalidate>
+            <h2 class="form__title">Редактировать профиль</h2>
+            <input
+              class="form__input form__input_type_name"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Имя"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+            <span class="form__error name-error"></span>
+            <input
+              class="form__input form__input_type_profession"
+              type="text"
+              name="profession"
+              id="profession"
+              placeholder="О себе"
+              required
+              minlength="2"
+              maxlength="200"
+            />
+            <span class="form__error profession-error"></span>
+            <button class="form__button" type="submit">Сохранить</button>
           </form>
-          <button class="popup__button popup__button_type_close" type="button"></button>
+          <button
+            class="popup__button popup__button_type_close"
+            type="button"
+          ></button>
         </div>
       </div>
       <div class="popup popup_type_add">
         <div class="popup__container">
-          <form class="popup__form popup__form_type_add" method="post" name="formElementAdd">
-            <h2 class="popup__title">Новое место</h2>
-            <input class="popup__input popup__input_type_title" type="text" name="title" placeholder="Название"/>
-            <input class="popup__input popup__input_type_link" type="url" name="link" placeholder="Ссылка на картинку"/>
-            <button class="popup__button popup__button_type_save" type="submit">Создать</button>
+          <form class="form form_type_add" name="formElementAdd" novalidate>
+            <h2 class="form__title">Новое место</h2>
+            <input
+              class="form__input form__input_type_title"
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Название"
+              required
+              minlength="2"
+              maxlength="30"
+            />
+            <span class="form__error title-error"></span>
+            <input
+              class="form__input form__input_type_link"
+              type="url"
+              name="link"
+              id="link"
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <span class="form__error link-error"></span>
+            <button class="form__button" type="submit">Создать</button>
           </form>
-          <button class="popup__button popup__button_type_close" type="button" aria-label="Закрыть"></button>
+          <button
+            class="popup__button popup__button_type_close"
+            type="button"
+            aria-label="Закрыть"
+          ></button>
         </div>
       </div>
       <div class="popup popup_type_view">
         <div class="popup__container popup__container_type_photo">
-          <button class="popup__button popup__button_type_close" type="button" aria-label="Закрыть"></button>
+          <button
+            class="popup__button popup__button_type_close"
+            type="button"
+            aria-label="Закрыть"
+          ></button>
           <img class="popup__photo" src="#" alt="" />
           <h2 class="popup__caption">Название картинки</h2>
         </div>
       </div>
       <template class="photo-template">
         <li class="photo__item">
-          <button class="photo__trash" type="button" aria-label="Кнопка удаления"></button>
+          <button
+            class="photo__trash"
+            type="button"
+            aria-label="Кнопка удаления"
+          ></button>
           <img class="photo__card" src="#" alt="" />
           <div class="photo__info">
             <h2 class="photo__title"></h2>
-            <button class="photo__like" type="button" aria-label="Кнопка лайка"></button>
+            <button
+              class="photo__like"
+              type="button"
+              aria-label="Кнопка лайка"
+            ></button>
           </div>
         </li>
       </template>
