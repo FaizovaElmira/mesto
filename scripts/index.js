@@ -47,12 +47,17 @@ const handleEditFormSubmit = (evt) => {
   profileProfession.textContent = professionInput.value;
   closePopup(popupEditProfile);
 };
+
 const handleAddFormSubmit = (evt) => {
   evt.preventDefault();
   const card = createCard({ name: titleInput.value, link: linkInput.value });
   cardsContainer.prepend(card);
+  const formElement = document.querySelector('.form');
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+  const buttonElement = formElement.querySelector(config.buttonSelector);
+  toggleButtonState(inputList, buttonElement, config);
+  evt.currentTarget.reset();
   closePopup(popupAddCard);
-  evt.target.reset()
 };
 
 const deleteCard = (evt) => {
