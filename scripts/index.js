@@ -47,12 +47,12 @@ const handleEditFormSubmit = (evt) => {
   profileProfession.textContent = professionInput.value;
   closePopup(popupEditProfile);
 };
-
 const handleAddFormSubmit = (evt) => {
   evt.preventDefault();
   const card = createCard({ name: titleInput.value, link: linkInput.value });
   cardsContainer.prepend(card);
   closePopup(popupAddCard);
+  evt.target.reset()
 };
 
 const deleteCard = (evt) => {
@@ -61,32 +61,22 @@ const deleteCard = (evt) => {
 };
 formElementEdit.addEventListener("submit", handleEditFormSubmit);
 formElementAdd.addEventListener("submit", handleAddFormSubmit);
+
 buttonEdit.addEventListener("click", () => {
   openPopup(popupEditProfile);
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
 });
-buttonEditClose.addEventListener("click", () => {
-  closePopup(popupEditProfile);
-});
-
 buttonAdd.addEventListener("click", () => {
   openPopup(popupAddCard);
 });
-buttonAddClose.addEventListener("click", () => {
-  closePopup(popupAddCard);
-});
-buttonViewClose.addEventListener("click", () => {
-  closePopup(popupViewPhoto);
-});
-
 const popups = document.querySelectorAll(".popup");
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
     if (evt.target.classList.contains("popup_opened")) {
       closePopup(popup);
     }
-    if (evt.target.classList.contains("popup__close")) {
+    if (evt.target.classList.contains("popup__button_type_close")) {
       closePopup(popup);
     }
   });
