@@ -1,6 +1,8 @@
-const cardsContainer = document.querySelector(".photo__container");
-const cardsTemplate = document.querySelector(".photo-template");
+import { FormValidator } from "./FormValidator.js";
+import { Card } from "./Card.js";
+import { initialCards, config, openPopup, closePopup } from "./constants.js";
 
+const cardsContainer = document.querySelector(".photo__container");
 const popupEditProfile = document.querySelector(".popup_type_edit");
 const formElementEdit = document.forms.formElementEdit;
 const nameInput = formElementEdit.elements.name;
@@ -14,32 +16,13 @@ const titleInput = formElementAdd.elements.title;
 const linkInput = formElementAdd.elements.link;
 
 const buttonEdit = document.querySelector(".profile__button_type_edit");
-const buttonEditClose = popupEditProfile.querySelector(".popup__button_type_close");
 const buttonAdd = document.querySelector(".profile__button_type_add");
-const buttonAddClose = popupAddCard.querySelector(".popup__button_type_close");
 
-const popupViewPhoto = document.querySelector(".popup_type_view");
-const popupPhoto = popupViewPhoto.querySelector(".popup__photo");
-const popupCaption = popupViewPhoto.querySelector(".popup__caption");
-const buttonViewClose = popupViewPhoto.querySelector(".popup__button_type_close");
-
-const overlays = Array.from(document.querySelectorAll(".popup"));
-
-const openPopup = (popup) => {
-  popup.classList.add("popup_opened");
-  document.addEventListener("keydown", handleEscape);
-};
-
-const closePopup = (popup) => {
-  popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", handleEscape);
-};
-
-const handleEscape = (evt) => {
-  if (evt.key === "Escape") {
-    closePopup(document.querySelector(".popup_opened"));
-  }
-};
+initialCards.forEach((item) => {
+  const card = new Card(item, ".photo-template");
+  const cardElement = card.generateCard();
+  document.querySelector(".photo__container").append(cardElement);
+});
 
 const handleEditFormSubmit = (evt) => {
   evt.preventDefault();
@@ -47,19 +30,18 @@ const handleEditFormSubmit = (evt) => {
   profileProfession.textContent = professionInput.value;
   closePopup(popupEditProfile);
 };
-
 const handleAddFormSubmit = (evt) => {
   evt.preventDefault();
-  const card = createCard({ name: titleInput.value, link: linkInput.value });
-  cardsContainer.prepend(card);
+  const cardNew = new Card(
+    { name: titleInput.value, link: linkInput.value },
+    ".photo-template"
+  );
+  const cardGenerated = cardNew.generateCard();
+  cardsContainer.prepend(cardGenerated);
   evt.currentTarget.reset();
   closePopup(popupAddCard);
 };
 
-const deleteCard = (evt) => {
-  const card = evt.target.closest(".photo__item");
-  card.remove();
-};
 formElementEdit.addEventListener("submit", handleEditFormSubmit);
 formElementAdd.addEventListener("submit", handleAddFormSubmit);
 
@@ -71,41 +53,9 @@ buttonEdit.addEventListener("click", () => {
 buttonAdd.addEventListener("click", () => {
   openPopup(popupAddCard);
 });
-const popups = document.querySelectorAll(".popup");
-popups.forEach((popup) => {
-  popup.addEventListener("mousedown", (evt) => {
-    if (evt.target.classList.contains("popup_opened")) {
-      closePopup(popup);
-    }
-    if (evt.target.classList.contains("popup__button_type_close")) {
-      closePopup(popup);
-    }
-  });
+
+const forms = Array.from(document.querySelectorAll(config.formSelector));
+forms.forEach((form) => {
+  const validator = new FormValidator(config, form);
+  validator.enableValidation();
 });
-const renderCards = () => {
-  const html = initialCards.map(createCard);
-  cardsContainer.append(...html);
-};
-const createCard = (item) => {
-  const cardElements = cardsTemplate.content.cloneNode(true);
-  const cardName = cardElements.querySelector(".photo__title");
-  const cardImage = cardElements.querySelector(".photo__card");
-  const deleteButton = cardElements.querySelector(".photo__trash");
-  const likeButton = cardElements.querySelector(".photo__like");
-  cardName.textContent = item.name;
-  cardImage.src = item.link;
-  cardImage.alt = item.name;
-  deleteButton.addEventListener("click", deleteCard);
-  likeButton.addEventListener("click", (evt) => {
-    const eventTarget = evt.target;
-    eventTarget.classList.toggle("photo__like_active");
-  });
-  cardImage.addEventListener("click", (evt) => {
-    popupPhoto.src = evt.target.src;
-    popupPhoto.alt = evt.target.alt;
-    popupCaption.textContent = evt.target.alt;
-    openPopup(popupViewPhoto);
-  });
-  return cardElements;
-};
-renderCards();
