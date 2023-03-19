@@ -3,7 +3,7 @@ import {
   popupViewPhoto,
   popupPhoto,
   popupCaption,
-} from "./utils.js";
+} from "../utils/utils.js";
 
 export class Card {
   constructor(item, cardSelector) {

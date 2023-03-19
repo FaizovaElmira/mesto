@@ -1,29 +1,29 @@
-import { FormValidator } from "./FormValidator.js";
-import { Card } from "./Card.js";
-import { initialCards, config } from "./constants.js";
-import { openPopup, closePopup } from "./utils.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Card } from "../components/Card.js";
+import { initialCards, config } from "../utils/constants.js";
+import { openPopup, closePopup } from "../utils/utils.js";
 
 const cardsContainer = document.querySelector(".photo__container");
 const popupEditProfile = document.querySelector(".popup_type_edit");
 const formElementEdit = document.forms.formElementEdit;
-const nameInput = formElementEdit.elements.name;
-const professionInput = formElementEdit.elements.profession;
+const inputName = formElementEdit.elements.name;
+const inputAbout = formElementEdit.elements.about;
 const profileName = document.querySelector(".profile__name");
-const profileProfession = document.querySelector(".profile__profession");
+const profileAbout = document.querySelector(".profile__about");
 
 const popupAddCard = document.querySelector(".popup_type_add");
 const formElementAdd = document.forms.formElementAdd;
-const titleInput = formElementAdd.elements.title;
-const linkInput = formElementAdd.elements.link;
+const inputTitle = formElementAdd.elements.title;
+const inputLink = formElementAdd.elements.link;
 
 const buttonEdit = document.querySelector(".profile__button_type_edit");
 const buttonAdd = document.querySelector(".profile__button_type_add");
 
-const editProfileFormValidator = new FormValidator(config, formElementEdit);
-editProfileFormValidator.enableValidation();
+const formEditValidator = new FormValidator(config, formElementEdit);
+formEditValidator.enableValidation();
 
-const AddCardFormValidator = new FormValidator(config, formElementAdd);
-AddCardFormValidator.enableValidation();
+const formAddValidator = new FormValidator(config, formElementAdd);
+formAddValidator.enableValidation();
 
 initialCards.forEach((item) => {
   const card = new Card(item, ".photo-template");
@@ -33,14 +33,14 @@ initialCards.forEach((item) => {
 
 const handleEditFormSubmit = (evt) => {
   evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileProfession.textContent = professionInput.value;
+  profileName.textContent = inputName.value;
+  profileAbout.textContent = inputAbout.value;
   closePopup(popupEditProfile);
 };
 const handleAddFormSubmit = (evt) => {
   evt.preventDefault();
   const cardNew = new Card(
-    { name: titleInput.value, link: linkInput.value },
+    { name: inputTitle.value, link: inputLink.value },
     ".photo-template"
   );
   const cardGenerated = cardNew.generateCard();
@@ -54,18 +54,13 @@ formElementAdd.addEventListener("submit", handleAddFormSubmit);
 
 buttonEdit.addEventListener("click", () => {
   openPopup(popupEditProfile);
-  nameInput.value = profileName.textContent;
-  professionInput.value = profileProfession.textContent;
-  editProfileFormValidator.resetValidation();
+  inputName.value = profileName.textContent;
+  inputAbout.value = profileAbout.textContent;
+  formEditValidator.resetValidation();
 });
 
 buttonAdd.addEventListener("click", () => {
   openPopup(popupAddCard);
-  AddCardFormValidator.resetValidation();
+  formAddValidator.resetValidation();
 });
 
-const forms = Array.from(document.querySelectorAll(config.formSelector));
-forms.forEach((form) => {
-  const validator = new FormValidator(config, form);
-  validator.enableValidation();
-});
