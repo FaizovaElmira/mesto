@@ -1,3 +1,9 @@
+const formElementEdit = document.forms.formElementEdit;
+const formElementAdd = document.forms.formElementAdd;
+const inputName = formElementEdit.elements.name;
+const inputAbout = formElementEdit.elements.about;
+const buttonEdit = document.querySelector(".profile__button_type_edit");
+const buttonAdd = document.querySelector(".profile__button_type_add");
 const initialCards = [
   {
     name: "Архыз",
@@ -34,4 +40,13 @@ const config = {
   errorClass: "form__error_visible",
 };
 
-export { initialCards, config };
+export {
+  initialCards,
+  config,
+  formElementEdit,
+  formElementAdd,
+  inputName,
+  inputAbout,
+  buttonEdit,
+  buttonAdd,
+};

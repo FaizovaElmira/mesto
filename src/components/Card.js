@@ -1,15 +1,9 @@
-import {
-  openPopup,
-  popupViewPhoto,
-  popupPhoto,
-  popupCaption,
-} from "./utils.js";
-
 export class Card {
-  constructor(item, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
+    this._name = data.name;
+    this._link = data.link;
     this._cardSelector = cardSelector;
-    this._name = item.name;
-    this._link = item.link;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -42,24 +36,19 @@ export class Card {
     this._photoLike.classList.toggle("photo__like_active");
   }
 
-  _handleCardClick() {
-    popupPhoto.src = this._link;
-    popupPhoto.alt = this._name;
-    popupCaption.textContent = this._name;
-    openPopup(popupViewPhoto);
+  handleCardClick() {
+    this._handleCardClick(this._name, this._link);
   }
 
   _setEventListeners() {
     this._photoTrash.addEventListener("click", () => {
       this._handleDeleteCard();
     });
-
     this._photoLike.addEventListener("click", () => {
       this._handleLikePost();
     });
-
     this._photoCard.addEventListener("click", () => {
-      this._handleCardClick();
+      this._handleCardClick(this._name, this._link);
     });
   }
 }
