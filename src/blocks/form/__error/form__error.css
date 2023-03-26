@@ -10,4 +10,5 @@
   visibility: hidden;
   text-align: start;
   margin-top: 5px;
+  min-height: 30px;
 }

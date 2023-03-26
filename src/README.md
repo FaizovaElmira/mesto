@@ -6,13 +6,18 @@
 Разработана валидация всех форм, улучшена UX при работе с pop-up.
 
 ### При создании проекта были задействованы такие технологии, как:
-* HTML
+
+* HTML;
 * CSS;
 * JavaScript;
 * Flexbox Layout;
 * Grid Layout;
 * Файловая структура организована по БЭМ nested;
-* Сайт свёрстан по дизайн-макету из графического онлайн-редактора [Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+* ООП; 
+* ES6;
+* Modules; 
+* Webpack
+* Сайт свёрстан по дизайн-макету из графического онлайн-редактора [Figma](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0-1)
 * В процессе разработки картинки обработаны с использованием ресурса [Tinypng](https://tinypng.com/)
 
 ### Ссылка на проект

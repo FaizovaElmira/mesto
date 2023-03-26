@@ -36,10 +36,6 @@ export class Card {
     this._photoLike.classList.toggle("photo__like_active");
   }
 
-  handleCardClick() {
-    this._handleCardClick(this._name, this._link);
-  }
-
   _setEventListeners() {
     this._photoTrash.addEventListener("click", () => {
       this._handleDeleteCard();
