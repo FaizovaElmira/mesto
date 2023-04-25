@@ -1,6 +1,7 @@
 export class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
+    this._submitButton = this._popup.querySelector(".form__button");
   }
 
   open() {
@@ -18,6 +19,16 @@ export class Popup {
       this.close();
     }
   };
+
+  renderLoading(isLoading, loadingText) {
+    if (!this._submitButton) return;
+    if (isLoading) {
+      this.defaultText = this._submitButton.textContent;
+      this._submitButton.textContent = loadingText;
+    } else {
+      this._submitButton.textContent = this.defaultText;
+    }
+  }
 
   setEventListeners() {
     this._popup.addEventListener("mousedown", (evt) => {

@@ -1,4 +1,5 @@
 .photo__like-counter {
+  color: rgba(0, 0, 0, 1);
   margin: 0;
   text-align: center;
   font-family: "Inter", "Arial", sans-serif;

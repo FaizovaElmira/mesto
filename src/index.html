@@ -17,19 +17,9 @@
       </header>
       <main>
         <section class="profile">
-          <div class="profile__avatar">
-            <button
-              class="profile__button profile__button_type_avatar"
-              type="button"
-              aria-label="Кнопка редактирования аватара"
-            >
-              <!-- <img
-              class="profile__avatar"
-              src="<%=require('./images/avatar.jpg')%>"
-              alt="Аватар"
-            /> -->
-            </button>
-          </div>
+          <button class="profile__button profile__button_type_avatar">
+            <img class="profile__avatar" alt="Аватар" src="#" />
+          </button>
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button
@@ -45,14 +35,15 @@
             aria-label="Кнопка добавления карточки"
           ></button>
         </section>
+
         <section class="photo" aria-label="Галерея фотографий">
           <ul class="photo__container"></ul>
         </section>
       </main>
       <footer class="footer">
-        <p class="footer__copyright">&copy;2023 Elmira Faizova</p>
+        <p class="footer__copyright">&copy;2023 Mesto Russia</p>
       </footer>
-      <!-- попап обновления аватарки -->
+
       <div class="popup popup_type_avatar">
         <div class="popup__container">
           <form
@@ -62,15 +53,15 @@
           >
             <h2 class="form__title">Обновить аватар</h2>
             <input
-              class="form__input form__input_type_link"
+              class="form__input form__input_type_avatar"
               type="url"
-              name="link"
-              id="link"
+              name="avatar"
+              id="avatar"
               placeholder="Ссылка на картинку"
               required
             />
-            <span class="form__error link-error"></span>
-            <button class="form__button" type="submit">Создать</button>
+            <span class="form__error avatar-error"></span>
+            <button class="form__button" type="submit">Сохранить</button>
           </form>
           <button
             class="popup__button popup__button_type_close"
@@ -79,6 +70,7 @@
           ></button>
         </div>
       </div>
+
       <div class="popup popup_type_edit">
         <div class="popup__container">
           <form class="form form_type_edit" name="formElementEdit" novalidate>
@@ -113,6 +105,7 @@
           ></button>
         </div>
       </div>
+
       <div class="popup popup_type_add">
         <div class="popup__container">
           <form class="form form_type_add" name="formElementAdd" novalidate>
@@ -146,6 +139,7 @@
           ></button>
         </div>
       </div>
+
       <div class="popup popup_type_view">
         <div class="popup__container popup__container_type_photo">
           <button
@@ -157,8 +151,8 @@
           <h2 class="popup__caption">Название картинки</h2>
         </div>
       </div>
-      <!-- попап подтверждения удаления карточки -->
-      <div class="popup popup_type_delete" id="popup_delete">
+
+      <div class="popup popup_type_delete">
         <div class="popup__container">
           <form
             class="form form_type_delete"
@@ -175,6 +169,7 @@
           ></button>
         </div>
       </div>
+
       <template class="photo-template">
         <li class="photo__item">
           <button
@@ -191,7 +186,7 @@
                 type="button"
                 aria-label="Кнопка лайка"
               ></button>
-              <p class="photo__like-counter"></p>
+              <span class="photo__like-counter">0</span>
             </div>
           </div>
         </li>
